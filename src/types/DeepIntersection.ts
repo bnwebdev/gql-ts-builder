@@ -1,17 +1,21 @@
 import {
+  $ElementType,
   Intersection,
   OmitByValue,
   PickByValue,
   Primitive,
 } from "utility-types";
+import { ObjectType } from "./ObjectType";
 
-export type DeepIntersection<T, U> = T extends Record<string, unknown>
-  ? U extends Record<string, unknown>
-    ? Intersection<PickByValue<T, Primitive>, U> & {
+export type DeepIntersection<Entity, Selection> = Entity extends unknown[]
+  ? DeepIntersection<$ElementType<Entity, number>, Selection>[]
+  : Entity extends ObjectType
+  ? Selection extends ObjectType
+    ? Intersection<PickByValue<Entity, Primitive>, Selection> & {
         [Key in keyof OmitByValue<
-          Intersection<T, U>,
+          Intersection<Entity, Selection>,
           Primitive
-        >]: DeepIntersection<T[Key], U[Key]>;
+        >]: DeepIntersection<Entity[Key], Selection[Key]>;
       }
     : never
   : never;
