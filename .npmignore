@@ -1,4 +1,5 @@
 node_modules
 tsconfig.json
 examples
+jest.config.js
 src

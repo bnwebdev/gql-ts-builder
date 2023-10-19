@@ -39,6 +39,8 @@ export type UserProfile = {
 
 export type User = {
   id: number;
+  createdAt: number;
+  updatedAt: number;
   profile: UserProfile;
   sellerProfile?: SellerProfile;
   deals: Deal[];
