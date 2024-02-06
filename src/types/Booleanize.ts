@@ -1,9 +1,9 @@
 import { $ElementType, $Keys, Primitive } from "utility-types";
 
-export type Booleanize<T> = T extends unknown[]
-  ? Booleanize<$ElementType<T, number>>
-  : T extends Record<string, unknown>
-  ? { [Key in $Keys<T>]: Booleanize<NonNullable<T[Key]>> }
-  : T extends Primitive
+export type Booleanize<Type> = Type extends unknown[]
+  ? Booleanize<$ElementType<Type, number>>
+  : Type extends Record<string, unknown>
+  ? { [Key in $Keys<Type>]: Booleanize<NonNullable<Type[Key]>> }
+  : Type extends Primitive
   ? true
   : never;

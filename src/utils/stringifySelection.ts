@@ -1,17 +1,15 @@
-export const stringifySelection = <T extends Record<string, unknown>>(
-  selection: T
+export const stringifySelection = <Type extends Record<string, unknown>>(
+  selection: Type
 ): string => {
   const stringifiedSelectionParts: string[] = [];
 
-  for (const [key, value] of Object.entries(selection)) {
+  Object.entries(selection).forEach(([key, value]) => {
     if (value && typeof value === "object") {
       const internalValue = value as Record<string, unknown>;
       const internalStringifiedSelection = stringifySelection(internalValue);
       const selectionPart = `${key} { ${internalStringifiedSelection} }`;
 
       stringifiedSelectionParts.push(selectionPart);
-
-      continue;
     }
 
     if (typeof value === "string") {
@@ -20,10 +18,8 @@ export const stringifySelection = <T extends Record<string, unknown>>(
 
     if (value === true) {
       stringifiedSelectionParts.push(key);
-
-      continue;
     }
-  }
+  });
 
   return stringifiedSelectionParts.join(" ");
 };

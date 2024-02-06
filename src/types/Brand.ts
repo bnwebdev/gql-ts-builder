@@ -1,3 +1,3 @@
-export type Brand<T, U> = T & {
-  __brand?: U;
+export type Brand<Type, BrandType> = Type & {
+  __brand?: BrandType;
 };

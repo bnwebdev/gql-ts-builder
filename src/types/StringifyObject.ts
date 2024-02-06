@@ -2,14 +2,17 @@ import { $Keys } from "utility-types";
 
 import { ObjectType } from "./ObjectType";
 
-export type StringifyObject<T> = T extends ObjectType
+export type StringifyObject<Type> = Type extends ObjectType
   ?
       | {
-          [Key in $Keys<T>]: Extract<T[Key], ObjectType> extends ObjectType
+          [Key in $Keys<Type>]: Extract<
+            Type[Key],
+            ObjectType
+          > extends ObjectType
             ?
-                | StringifyObject<Extract<T[Key], ObjectType>>
-                | Exclude<T[Key], ObjectType>
-            : T[Key];
+                | StringifyObject<Extract<Type[Key], ObjectType>>
+                | Exclude<Type[Key], ObjectType>
+            : Type[Key];
         }
       | string
-  : T;
+  : Type;
