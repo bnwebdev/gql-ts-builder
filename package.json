@@ -27,5 +27,13 @@
     "ts-jest": "^29.1.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bnwebdev/gql-ts-builder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bnwebdev/gql-ts-builder/issues"
+  },
+  "homepage": "https://github.com/bnwebdev/gql-ts-builder#readme"
 }
