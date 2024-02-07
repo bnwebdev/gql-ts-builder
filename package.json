@@ -12,6 +12,7 @@
   },
   "keywords": [
     "graphql",
+    "typescript",
     "query-builder"
   ],
   "author": "Nikita Bereziuk <nikitber@hotmail.com>",
