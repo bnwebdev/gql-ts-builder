@@ -5,6 +5,7 @@ tsconfig.json
 .DS_Store
 .github
 .husky
+.releaserc
 commitlint.config.js
 examples
 jest.config.js
