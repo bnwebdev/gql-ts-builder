@@ -10,7 +10,7 @@ describe("union", () => {
                   ${selection}
               }
           }
-      `
+      `,
   );
 
   const createDestinationAddressQuery = createGraphqlBuilder<
@@ -21,7 +21,7 @@ describe("union", () => {
           ... on DestinationAddress {
             ${selection}
           }
-  `
+  `,
   );
 
   const createDeliveryAddressQuery = createGraphqlBuilder<
@@ -32,7 +32,7 @@ describe("union", () => {
         ... on DeliveryAddress {
           ${selection}
         }
-`
+`,
   );
 
   const destinationQuery = createDestinationAddressQuery({

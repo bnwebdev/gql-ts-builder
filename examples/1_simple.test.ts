@@ -10,7 +10,7 @@ describe("simple", () => {
               ${selection}
           }
       }
-  `
+  `,
   );
 
   it("should handle simple query", () => {
