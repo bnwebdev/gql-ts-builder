@@ -14,7 +14,7 @@ With this package, you can:
 npm install gql-ts-builder
 ```
 
-## Example:
+## Example with raw usage:
 
 ```typescript
 import { useQuery, gql, DocumentNode } from "@apollo/client";
@@ -62,6 +62,42 @@ export const useUser = () => {
     userError: error,
   };
 };
+```
+
+## Example with combined GraphqlBuilder and generated types usage:
+
+```typescript
+import { useQuery, gql, DocumentNode } from "@apollo/client";
+import { GraphqlBuilder, InferSelection } from "gql-ts-builder";
+
+import { Query, Mutation, Subscription } from "@path-to-generated-types";
+
+type GraphqlRoot = {
+  query: Query;
+  mutation: Mutation;
+  subscription: Subscription;
+};
+
+const inputsMapper = {
+  user: "($input: UserInput!)",
+};
+
+const gqlBuilder = new GraphqlBuilder<GraphqlRoot, DocumentNode>(
+  (operation, name, select) => {
+    const input = inputsMapper[name];
+
+    return gql`
+      ${operation} ${capitalize(name)} ${input} {
+        ${name} { ${select} }
+      }`;
+  },
+);
+
+const USER_QUERY = gqlBuilder.query.user({ id: true, name: true });
+
+// Infer result types
+// Payload type will be { id: string; name?: string; }
+type Payload = InferSelection<typeof query>;
 ```
 
 This package aims to enhance the developer experience when working with GraphQL, reducing errors and improving productivity.
