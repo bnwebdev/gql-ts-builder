@@ -1,5 +1,6 @@
-import { stringifySelection } from "./utils";
-import { Brand, DeepIntersection, GraphqlOperationBuilder } from "./types";
+import { Brand, DeepIntersection, GraphqlOperationBuilder } from "../types";
+
+import { stringifySelection } from "./stringifySelection";
 
 export const createGraphqlOperationBuilder =
   <Entity extends Record<string, unknown>, ReturnType>(

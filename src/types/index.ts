@@ -7,3 +7,7 @@ export * from "./ObjectType";
 export * from "./StringifyObject";
 export * from "./CreateGraphqlOperationBuilder";
 export * from "./GraphqlOperationBuilder";
+export * from "./GraphqlRootOperation";
+export * from "./GraphqlRoot";
+export * from "./GraphqlOperationsBuilder";
+export * from "./DecorateSelection";
