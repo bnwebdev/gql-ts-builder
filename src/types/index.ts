@@ -5,3 +5,5 @@ export * from "./DeepIntersection";
 export * from "./GraphqlSelection";
 export * from "./ObjectType";
 export * from "./StringifyObject";
+export * from "./CreateGraphqlOperationBuilder";
+export * from "./GraphqlOperationBuilder";
