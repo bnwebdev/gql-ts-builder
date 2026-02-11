@@ -18,7 +18,7 @@ npm install gql-ts-builder
 
 ```typescript
 import { useQuery, gql, DocumentNode } from "@apollo/client";
-import { createQueryBuilder, InferSelection } from "gql-ts-builder";
+import { createGraphqlOperationBuilder, InferSelection } from "gql-ts-builder";
 
 // Define types
 type User = {
@@ -28,14 +28,14 @@ type User = {
 };
 
 // Set up query builder
-const buildUserQuery = createQueryBuilder<User, DocumentNode>(
+const buildUserQuery = createGraphqlOperationBuilder<User, DocumentNode>(
   (selection) => gql`
     query User {
         user {
             ${selection}
         }
     }
-`
+`,
 );
 
 // Construct a query
